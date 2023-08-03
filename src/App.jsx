@@ -6,7 +6,7 @@ function App() {
   const [incrementor, setIncrementor] = useState(1)
 
   function changeScore() {
-    setScore(score + 1)
+    setScore(score + incrementor)
   }
   function incrementScore() {
     if (score >= 10) {
@@ -22,15 +22,17 @@ function App() {
   }
   return (
     <main>
-        <h1>Current Score:{score}</h1>
-      <div>
-        <button onClick={changeScore}> +{incrementor} </button>
-        <button onClick={incrementScore}> Pay 10 points to change from +{setIncrementor} to +{incrementor + 1} </button>
-      </div>
-      <div>
-        <h2>You Win!</h2>
-        <button onClick={reset}>Play Again?</button>
-      </div>
+      <h1>Current Score:{score}</h1>
+      {score >= 100
+        ? <div>
+            <h2>You Win!</h2>
+            <button onClick={ reset }>Play Again?</button>
+          </div>
+        : <div>
+            <button onClick={ changeScore }> +{ incrementor } </button>
+            <button onClick={ incrementScore }> Pay 10 points to change from +{ incrementor } to +{ incrementor + 1 } </button>
+          </div>
+      }
     </main>
   )
 }
